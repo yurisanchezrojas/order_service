@@ -29,6 +29,7 @@ public class OrderController {
     @GetMapping(value = "/{orderId}")
     public ResponseEntity<OrderResponse> findById(@PathVariable String orderId) {
         Order order = orderService.findOrderById(orderId);
+        System.out.println("holagit ");
         return new ResponseEntity<>(orderMapper.convertEntityToDto(order), HttpStatus.OK);
     }
 
