@@ -22,8 +22,13 @@ jobs:
       - name: Build with Maven
         run: mvn clean install -DskipTests
 
+      - name: Print DockerHub Username
+        run: echo "DockerHub Username: \${{ secrets.DOCKERHUB_USERNAME }}"
+
       - name: Login to DockerHub
-        run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+        run: |
+          # GitHub Actions placeholder
+          echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
 
       - name: Build docker image
         run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/order-service:latest .
